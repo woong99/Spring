@@ -1,10 +1,7 @@
 package com.company.design;
 
 import com.company.design.adapter.Electronic110V;
-import com.company.design.aop.AopBrowser;
-import com.company.design.proxy.IBrowser;
-
-import java.util.concurrent.atomic.AtomicLong;
+import com.company.design.decorator.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,21 +44,35 @@ public class Main {
 //        browser.show();
 //        browser.show();
 
-        AtomicLong start = new AtomicLong();
-        AtomicLong end = new AtomicLong();
+//        AtomicLong start = new AtomicLong();
+//        AtomicLong end = new AtomicLong();
+//
+//        IBrowser aopBrowser = new AopBrowser("www.naver.com", () -> {
+//            System.out.println("before");
+//            start.set(System.currentTimeMillis());
+//        }, () -> {
+//            long now = System.currentTimeMillis();
+//            end.set(now - start.get());
+//        });
+//        aopBrowser.show();
+//        System.out.println("loading time : " + end.get());
+//
+//        aopBrowser.show();
+//        System.out.println("loading time : " + end.get());
 
-        IBrowser aopBrowser = new AopBrowser("www.naver.com", () -> {
-            System.out.println("before");
-            start.set(System.currentTimeMillis());
-        }, () -> {
-            long now = System.currentTimeMillis();
-            end.set(now - start.get());
-        });
-        aopBrowser.show();
-        System.out.println("loading time : " + end.get());
+//        ** Decorator Design Example **
+        ICar audi = new Audi(1000);
+        audi.showPrice();
 
-        aopBrowser.show();
-        System.out.println("loading time : " + end.get());
+        // a3
+        ICar audi3 = new A3(audi, "A3");
+        audi3.showPrice();
+        // a4
+        ICar audi4 = new A4(audi, "A4");
+        audi4.showPrice();
+        // a5
+        ICar audi5 = new A5(audi, "A5");
+        audi5.showPrice();
     }
 
 
