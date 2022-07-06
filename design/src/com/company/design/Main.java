@@ -1,7 +1,8 @@
 package com.company.design;
 
 import com.company.design.adapter.Electronic110V;
-import com.company.design.decorator.*;
+import com.company.design.observer.Button;
+import com.company.design.observer.IButtonListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -61,18 +62,32 @@ public class Main {
 //        System.out.println("loading time : " + end.get());
 
 //        ** Decorator Design Example **
-        ICar audi = new Audi(1000);
-        audi.showPrice();
+//        ICar audi = new Audi(1000);
+//        audi.showPrice();
+//
+//        // a3
+//        ICar audi3 = new A3(audi, "A3");
+//        audi3.showPrice();
+//        // a4
+//        ICar audi4 = new A4(audi, "A4");
+//        audi4.showPrice();
+//        // a5
+//        ICar audi5 = new A5(audi, "A5");
+//        audi5.showPrice();
 
-        // a3
-        ICar audi3 = new A3(audi, "A3");
-        audi3.showPrice();
-        // a4
-        ICar audi4 = new A4(audi, "A4");
-        audi4.showPrice();
-        // a5
-        ICar audi5 = new A5(audi, "A5");
-        audi5.showPrice();
+//        ** Observer Design Example **
+        Button button = new Button("버튼");
+        button.addListener(new IButtonListener() {
+            @Override
+            public void clickEvent(String event) {
+                System.out.println(event);
+            }
+        });
+        button.click("메시지 전달 : Click 1");
+        button.click("메시지 전달 : Click 2");
+        button.click("메시지 전달 : Click 3");
+        button.click("메시지 전달 : Click 4");
+
     }
 
 
