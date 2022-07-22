@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--   MySQL dataSource-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+        <property name="url"
+                  value="jdbc:log4jdbc:mysql://localhost:3306/jdbc?useSSL=false&amp;serverTimezone=UTC"></property>
+        <property name="username" value="woong"></property>
+        <property name="password" value="Jhan00254!"></property>
+    </bean>
+
+    <!--    myBatis SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"></property>
+    </bean>
+
+    <!--        myBatis SqlSessionTemplate-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+
+    <mybatis-spring:scan base-package="mapper"/>
+    <context:component-scan base-package="service"></context:component-scan>
 
 </beans>
