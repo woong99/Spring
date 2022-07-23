@@ -1,10 +1,10 @@
 package controller;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 
 @Controller
-@Log4j2
+@Slf4j
 public class TestController {
 
 

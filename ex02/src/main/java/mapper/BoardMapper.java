@@ -19,4 +19,5 @@ public interface BoardMapper {
 
     public int update(BoardVO board);
 
+   
 }

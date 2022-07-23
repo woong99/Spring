@@ -3,14 +3,14 @@ package service;
 import domain.BoardVO;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Log4j2
+@Slf4j
 @Service
 @AllArgsConstructor
 public class BoarServiceImpl implements BoardService {

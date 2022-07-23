@@ -36,7 +36,12 @@
     <delete id="delete">
         delete
         from tbl_board
-        where bno = #{bno}
+        where bno = #{bno};
+        set
+        @cnt = 0;
+        update tbl_board
+        set bno =@cnt:=@cnt +1;
+        alter table tbl_board auto_increment = 1;
     </delete>
 
     <update id="update">
@@ -47,4 +52,6 @@
             updateDate = sysdate()
         where bno = #{bno}
     </update>
+
+
 </mapper>

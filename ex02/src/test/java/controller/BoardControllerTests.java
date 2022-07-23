@@ -1,7 +1,7 @@
 package controller;
 
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.log4j.Log4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/applicationContext.xml", "file:src/main/webapp/WEB-INF/dispatcher-servlet.xml"})
-@Log4j2
+@Log4j
 public class BoardControllerTests {
 
     @Setter(onMethod_ = {@Autowired})
@@ -81,7 +81,7 @@ public class BoardControllerTests {
                 .andReturn()
                 .getModelAndView()
                 .getViewName();
-        
+
         log.info(resultPage);
     }
 }
