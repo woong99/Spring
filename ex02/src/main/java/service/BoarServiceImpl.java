@@ -1,6 +1,7 @@
 package service;
 
 import domain.BoardVO;
+import domain.Criteria;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -46,9 +47,10 @@ public class BoarServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardVO> getList() {
-        log.info("getList.........");
-
-        return mapper.getList();
+    public List<BoardVO> getList(Criteria cri) {
+        log.info("get List with criteria: " + cri);
+        cri.setRowNum(cri.getPageNum() * cri.getAmount());
+        cri.setRn((cri.getPageNum() - 1) * cri.getAmount());
+        return mapper.getListWithPaging(cri);
     }
 }

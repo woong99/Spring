@@ -1,6 +1,7 @@
 package controller;
 
 import domain.BoardVO;
+import domain.Criteria;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,9 @@ public class BoardController {
     private BoardService service;
 
     @GetMapping("/list")
-    public void list(Model model) {
+    public void list(Criteria cri, Model model) {
         log.info("list");
-        model.addAttribute("list", service.getList());
+        model.addAttribute("list", service.getList(cri));
     }
 
     @GetMapping("/register")

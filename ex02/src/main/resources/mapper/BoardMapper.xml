@@ -53,5 +53,19 @@
         where bno = #{bno}
     </update>
 
+    <select id="getListWithPaging" resultType="domain.BoardVO">
+        <![CDATA[
+        set
+        @rownum = 0;
+
+        select rn, bno, title, content, writer, regdate, updatedate
+        from (select @rownum:=@rownum + 1 rn, bno, title, content, writer, regdate, updatedate
+              from tbl_board
+              where @rownum
+                  < #{rowNum}) rn
+        where rn
+                  > (#{rn});
+        ]]>
+    </select>
 
 </mapper>

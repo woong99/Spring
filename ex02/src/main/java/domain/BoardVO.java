@@ -7,6 +7,7 @@ import java.util.Date;
 @Data
 public class BoardVO {
 
+    private int rn;
     private int bno;
     private String title;
     private String content;
