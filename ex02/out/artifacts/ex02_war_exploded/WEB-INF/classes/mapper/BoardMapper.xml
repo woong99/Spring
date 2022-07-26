@@ -53,12 +53,24 @@
         where bno = #{bno}
     </update>
 
-    <update id="arrange">
+    <select id="getListWithPaging" resultType="domain.BoardVO">
+        <![CDATA[
         set
-        @cnt = 0;
-        update tbl_board
-        set bno =@cnt:=@cnt +1;
-        alter table tbl_board auto_increment = 1;
-    </update>
+        @rownum = 0;
 
+        select rn, bno, title, content, writer, regdate, updatedate
+        from (select @rownum:=@rownum + 1 rn, bno, title, content, writer, regdate, updatedate
+              from tbl_board
+              where @rownum
+                  < #{rowNum}) rn
+        where rn
+                  > (#{rn});
+        ]]>
+    </select>
+
+    <select id="getTotalCount" resultType="int">
+        select count(*)
+        from tbl_board
+        where bno > 0
+    </select>
 </mapper>

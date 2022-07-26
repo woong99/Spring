@@ -53,4 +53,10 @@ public class BoarServiceImpl implements BoardService {
         cri.setRn((cri.getPageNum() - 1) * cri.getAmount());
         return mapper.getListWithPaging(cri);
     }
+
+    @Override
+    public int getTotal(Criteria cri) {
+        log.info("get total count");
+        return mapper.getTotalCount(cri);
+    }
 }
