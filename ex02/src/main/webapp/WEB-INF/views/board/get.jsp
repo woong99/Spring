@@ -55,6 +55,7 @@
                     List
                 </button>
 
+
                 <form id="operForm" action="/board/modify" method="get">
                     <input type="hidden" id="bno" name="bno" value='<c:out value="${get.bno}"/>'>
                     <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>">
@@ -66,6 +67,98 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-comments fa-fw"></i> Reply
+                <button id="addReplyBtn" class="btn btn-primary btn-xs pull-right">New Reply</button>
+            </div>
+
+            <div class="panel-body">
+                <ul class="chat">
+                    <li class="left clearfix" data-rno="12">
+                        <div>
+                            <div class="header">
+                                <strong class="primary-font">user00</strong>
+                                <small class="pull-right text-muted">2018-01-01 13:13</small>
+                            </div>
+                            <p>Good job!</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/resources/js/reply.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        const bnoValue = '<c:out value="${get.bno}"/>';
+        const replyUl = $(".chat");
+
+        showList(1);
+
+        function showList(page) {
+            replyService.getList({bno: bnoValue, page: page || 1}, function (list) {
+                let str = "";
+                if (list == null || list.length == 0) {
+                    replyUl.html("");
+                    return;
+                }
+                for (let i = 0, len = list.length || 0; i < len; i++) {
+                    str += "<li class='left clearfix' data-rno='" + list[i].rno + "'>";
+                    str += " <div><div class='header'><strong class='primary-font'>" + list[i].replyer + "</strong>";
+                    str += " <small class='pull-right text-muted'>" + replyService.displayTime(list[i].replyDate) + "</small></div>";
+                    str += " <p>" + list[i].reply + "</p></div></li>";
+                }
+                replyUl.html(str);
+            })
+        }
+    })
+
+
+    <%--console.log("==============");--%>
+    <%--console.log("JS TEST");--%>
+
+    <%--var bnoValue = '<c:out value="${get.bno}"/>';--%>
+
+    // replyService.add(
+    //     {reply: "JS Test", replyer: "tester", bno: bnoValue},
+    //     function (result) {
+    //         alert("RESULT: " + result);
+    //     }
+    // )
+
+    // replyService.getList({bno: bnoValue, page: 1}, function (list) {
+    //     for (let i = 0, len = list.length || 0; i < len; i++) {
+    //         console.log(list[i]);
+    //     }
+    // })
+
+    // replyService.remove(4, function (count) {
+    //     console.log(count);
+    //
+    //     if (count == "success") {
+    //         alert("REMOVED");
+    //     }
+    // }, function (err) {
+    //     alert("ERROR...");
+    // })
+
+    // replyService.update({
+    //     rno: 8,
+    //     bno: bnoValue,
+    //     reply: "진짜 수정!!"
+    // }, function (result) {
+    //     alert("수정 완료...")
+    // })
+
+    // replyService.get(10, function (data) {
+    //     console.log(data);
+    // })
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {
