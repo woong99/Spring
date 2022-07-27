@@ -92,6 +92,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Reply</label>
+                    <input class="form-control" name="reply" value="New Reply!!!!">
+                </div>
+                <div class="form-group">
+                    <label>Replyer</label>
+                    <input class="form-control" name="replyer" value="replyer">
+                </div>
+                <div class="form-group">
+                    <label>Reply Date</label>
+                    <input class="form-control" name="replyDate" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modalModBtn" type="button" class="btn btn-warning">Modify</button>
+                <button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
+                <button id="modalRegisterBtn" type="button" class="btn btn-primary" data-dismiss="modal">Register
+                </button>
+                <button id="modalCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -116,6 +148,78 @@
                 replyUl.html(str);
             })
         }
+
+        const modal = $(".modal");
+        const modalInputReply = modal.find("input[name='reply']");
+        const modalInputReplyer = modal.find("input[name='replyer']");
+        const modalInputReplyDate = modal.find("input[name='replyDate']");
+
+        const modalModBtn = $("#modalModBtn");
+        const modalRemoveBtn = $("#modalRemoveBtn");
+        const modalRegisterBtn = $("#modalRegisterBtn");
+
+        $("#addReplyBtn").on("click", function (e) {
+            modal.find("input").val("");
+            modalInputReplyDate.closest("div").hide();
+            modal.find("button[id != 'modalCloseBtn']").hide();
+
+            modalRegisterBtn.show();
+
+            $(".modal").modal("show");
+        })
+
+        $("#modalRegisterBtn").on("click", function (e) {
+            const reply = {
+                reply: modalInputReply.val(),
+                replyer: modalInputReplyer.val(),
+                bno: bnoValue
+            };
+            replyService.add(reply, function (result) {
+                alert(result);
+
+                modal.find("input").val("");
+                modal.modal("hide");
+
+                showList(1);
+            })
+        })
+
+        $(".chat").on("click", "li", function (e) {
+            const rno = $(this).data("rno");
+
+            replyService.get(rno, function (reply) {
+                modalInputReply.val(reply.reply);
+                modalInputReplyer.val(reply.replyer).attr("readonly", "readonly");
+                modalInputReplyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly", "readonly");
+                modal.data("rno", reply.rno);
+
+                modal.find("button[id != 'modalCloseBtn']").hide();
+                modalModBtn.show();
+                modalRemoveBtn.show();
+
+                $(".modal").modal("show");
+            })
+        })
+
+        $("#modalModBtn").on("click", function (e) {
+            const reply = {rno: modal.data("rno"), reply: modalInputReply.val()};
+
+            replyService.update(reply, function (result) {
+                alert(result);
+                modal.modal("hide");
+                showList(1);
+            })
+        })
+
+        $("#modalRemoveBtn").on("click", function (e) {
+            const rno = modal.data("rno");
+
+            replyService.remove(rno, function (result) {
+                alert(result);
+                modal.modal("hide");
+                showList(1);
+            })
+        })
     })
 
 

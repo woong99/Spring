@@ -95,12 +95,10 @@ const replyService = (function () {
         const gap = today.getTime() - timeValue;
 
         const dateObj = new Date(timeValue);
-        console.log(dateObj)
         let str = "";
 
         if (gap < (1000 * 60 * 60 * 24)) {
             const hh = dateObj.getHours();
-            console.log(hh);
             const mi = dateObj.getMinutes();
             const ss = dateObj.getSeconds();
 
