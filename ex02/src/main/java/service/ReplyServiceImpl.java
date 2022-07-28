@@ -1,6 +1,7 @@
 package service;
 
 import domain.Criteria;
+import domain.ReplyPageDTO;
 import domain.ReplyVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,14 @@ import java.util.List;
 public class ReplyServiceImpl implements ReplyService {
 
     private ReplyMapper mapper;
+
+    @Override
+    public ReplyPageDTO getListPage(Criteria cri, int bno) {
+        return new ReplyPageDTO(
+                mapper.getCountByBno(bno),
+                mapper.getListWithPaging(cri, bno)
+        );
+    }
 
     @Override
     public int register(ReplyVO vo) {

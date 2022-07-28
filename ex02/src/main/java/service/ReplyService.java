@@ -1,6 +1,7 @@
 package service;
 
 import domain.Criteria;
+import domain.ReplyPageDTO;
 import domain.ReplyVO;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface ReplyService {
     public int remove(int rno);
 
     public List<ReplyVO> getList(Criteria cri, int bno);
+
+    public ReplyPageDTO getListPage(Criteria cri, int bno);
 }

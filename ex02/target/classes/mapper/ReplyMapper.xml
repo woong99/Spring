@@ -35,9 +35,25 @@
     </update>
 
     <select id="getListWithPaging" resultType="domain.ReplyVO">
+       <![CDATA[
+        set
+        @rownum = 0;
         select rno, bno, reply, replyer, replyDate, updateDate
+        from (select @rownum:=@rownum + 1 rn, bno, rno, reply, replyer, replyDate, updateDate
+              from tbl_reply
+              where bno = #{bno}
+                and rno
+                  > 0
+                and @rownum <= #{cri.rowNum}) rn
+        where rn > #{cri.rn}
+        ]]>
+    </select>
+
+    <select id="getCountByBno" resultType="int">
+        <![CDATA[
+        select count(rno)
         from tbl_reply
         where bno = #{bno}
-        order by rno asc
+        ]]>
     </select>
 </mapper>
