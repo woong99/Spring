@@ -58,8 +58,8 @@
         set
         @rownum = 0;
 
-        select rn, bno, title, content, writer, regdate, updatedate
-        from (select @rownum:=@rownum + 1 rn, bno, title, content, writer, regdate, updatedate
+        select rn, bno, title, content, writer, regdate, updatedate, replycnt
+        from (select @rownum:=@rownum + 1 rn, bno, title, content, writer, regdate, updatedate, replycnt
               from tbl_board
               where
                   ]]>
@@ -94,4 +94,10 @@
         from tbl_board
         where bno > 0
     </select>
+
+    <update id="updateReplyCnt">
+        update tbl_board
+        set replycnt = replycnt + #{amount}
+        where bno = #{bno}
+    </update>
 </mapper>

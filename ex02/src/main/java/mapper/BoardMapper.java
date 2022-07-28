@@ -2,6 +2,7 @@ package mapper;
 
 import domain.BoardVO;
 import domain.Criteria;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public interface BoardMapper {
     public int update(BoardVO board);
 
     public int getTotalCount(Criteria cri);
+
+    public void updateReplyCnt(@Param("bno") int bno, @Param("amount") int amount);
 
 
 }
