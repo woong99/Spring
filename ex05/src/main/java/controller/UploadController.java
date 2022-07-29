@@ -3,6 +3,8 @@ package controller;
 import domain.AttachFileDTO;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -135,6 +137,18 @@ public class UploadController {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseBody
+    public ResponseEntity<Resource> downloadFile(String fileName) {
+        log.info("download file: " + fileName);
+
+        FileSystemResource resource = new FileSystemResource("/Users/woong_9yo/Desktop/WorkPlace/Spring/ex05/src/main/resources/upload/" + fileName);
+
+        log.info("resource: " + resource);
+
+        return null;
     }
 
     private String getFolder() {
