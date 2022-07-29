@@ -9,6 +9,28 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        .uploadResult {
+            width: 100%;
+            background-color: gray;
+        }
+
+        .uploadResult ul {
+            display: flex;
+            flex-float: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .uploadResult ul li {
+            list-style: none;
+            padding: 10px;
+        }
+
+        .uploadResult ul li img {
+            width: 20px;
+        }
+    </style>
 </head>
 <body>
 <h1>Upload with Ajax</h1>
@@ -71,7 +93,7 @@
                 success: function (result) {
                     console.log(result)
                     alert("Uploaded");
-                    showUploadFile(result);
+                    showUploadedFile(result);
                     $(".uploadDiv").html(cloneObj.html());
 
                 }
@@ -80,11 +102,18 @@
 
         const uploadResult = $(".uploadResult ul");
 
-        function showUploadFile(uploadResultArr) {
+        function showUploadedFile(uploadResultArr) {
             let str = "";
 
             $(uploadResultArr).each(function (i, obj) {
-                str += "<li>" + obj.fileName + "</li>";
+                console.log(obj)
+
+                if (!obj.image) {
+                    str += "<li><img src='/resources/img/attach.jpeg'>" + obj.fileName + "</li>";
+                } else {
+                    const fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+                    str += "<li><img src='/display?fileName=" + fileCallPath + "'><li>";
+                }
             });
 
             uploadResult.append(str);
