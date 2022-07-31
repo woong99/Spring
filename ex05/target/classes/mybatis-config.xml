@@ -6,8 +6,8 @@
     <settings>
         <setting name="logImpl" value="LOG4J"/>
     </settings>
-    <!--    <typeAliases>-->
-    <!--        <typeAlias type="domain.BoardVO" alias="BoardVO"/>-->
-    <!--    </typeAliases>-->
+    <typeAliases>
+        <typeAlias type="domain.BoardVO" alias="BoardVO"/>
+    </typeAliases>
 
 </configuration>
