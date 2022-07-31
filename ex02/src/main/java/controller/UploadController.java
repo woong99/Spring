@@ -61,7 +61,7 @@ public class UploadController {
 
     @GetMapping("/uploadAjax")
     public void uploadAjax() {
-        log.info("upload ajaxx");
+        log.info("upload ajax");
     }
 
     @PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
