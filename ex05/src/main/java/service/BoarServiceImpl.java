@@ -1,28 +1,49 @@
 package service;
 
+import domain.BoardAttachVO;
 import domain.BoardVO;
 import domain.Criteria;
-import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import mapper.BoardAttachMapper;
 import mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Slf4j
 @Service
-@AllArgsConstructor
 public class BoarServiceImpl implements BoardService {
 
     @Setter(onMethod_ = @Autowired)
     private BoardMapper mapper;
 
+    @Setter(onMethod_ = @Autowired)
+    private BoardAttachMapper attachMapper;
+
+    @Override
+    public List<BoardAttachVO> getAttachList(int bno) {
+        log.info("get Attach list by bno" + bno);
+
+        return attachMapper.findByBno(bno);
+    }
+
+    @Transactional
     @Override
     public void register(BoardVO board) {
         log.info("register......" + board);
         mapper.insertSelectKey(board);
+
+        if (board.getAttachList() == null || board.getAttachList().size() <= 0) {
+            return;
+        }
+
+        board.getAttachList().forEach(attach -> {
+            attach.setBno(board.getBno());
+            attachMapper.insert(attach);
+        });
     }
 
     @Override

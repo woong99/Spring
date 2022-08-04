@@ -1,5 +1,6 @@
 package service;
 
+import domain.BoardAttachVO;
 import domain.BoardVO;
 import domain.Criteria;
 
@@ -19,5 +20,7 @@ public interface BoardService {
     public List<BoardVO> getList(Criteria cri);
 
     public int getTotal(Criteria cri);
+
+    public List<BoardAttachVO> getAttachList(int bno);
 
 }
