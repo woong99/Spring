@@ -7,12 +7,12 @@ import java.net.URLEncoder;
 
 @Component
 public class UrlEncoder implements IEncoder {
-
     public String encode(String message) {
         try {
             return URLEncoder.encode(message, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -10,7 +10,9 @@ import org.springframework.context.annotation.Configuration;
 public class SpringIocApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(SpringIocApplication.class, args);
+
         ApplicationContext context = ApplicationContextProvider.getContext();
 
 //        Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
@@ -18,26 +20,24 @@ public class SpringIocApplication {
 
         Encoder encoder = context.getBean("urlEncode", Encoder.class);
         String url = "www.naver.com/books/it?page=10&size=20&name=spring-boot";
+
         String result = encoder.encode(url);
         System.out.println(result);
 
-//        encoder.setIEncoder(urlEncoder);
-//        result = encoder.encode(url);
-//        System.out.println(result);
     }
 
 }
 
 @Configuration
-class AppConfig{
+class AppConfig {
 
     @Bean("base64Encode")
-    public Encoder encoder(Base64Encoder base64Encoder){
+    public Encoder encoder(Base64Encoder base64Encoder) {
         return new Encoder(base64Encoder);
     }
 
     @Bean("urlEncode")
-    public Encoder encoder(UrlEncoder urlEncoder){
+    public Encoder encoder(UrlEncoder urlEncoder) {
         return new Encoder(urlEncoder);
     }
 }
