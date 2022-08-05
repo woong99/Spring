@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PageController {
 
     @RequestMapping("/main")
-    public String main(){
+    public String main() {
         return "main.html";
     }
 
     @ResponseBody
     @GetMapping("/user")
-    public User user(){
+    public User user() {
         var user = new User();
-        user.setName("steve");
-        user.setAddress("패스트 캠퍼스");
+        user.setName("woong");
+        user.setAddress("AAAAAA");
         return user;
     }
 }

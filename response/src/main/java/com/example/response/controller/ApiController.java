@@ -9,19 +9,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class ApiController {
 
-    // TEXT
     @GetMapping("/text")
-    public String text(@RequestParam String account) {
+    public String text(@RequestParam String account){
         return account;
     }
 
-    // JSON
     @PostMapping("/json")
     public User json(@RequestBody User user){
         return user;
     }
 
-    // ResponseEntity
     @PutMapping("/put")
     public ResponseEntity<User> put(@RequestBody User user){
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
