@@ -1,13 +1,21 @@
 package com.example.hello.dto;
 
 public class UserRequest {
-
     private String name;
     private String email;
     private int age;
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRequest{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                '}';
     }
 
     public void setName(String name) {
@@ -28,14 +36,5 @@ public class UserRequest {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "UserRequest{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", age=" + age +
-                '}';
     }
 }
