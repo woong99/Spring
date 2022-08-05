@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0060d2ae-2dfd-482b-a762-00c551ec2453" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/untitled.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ex001/src/test/java/mybatis/MySQLConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ex001/src/test/java/mybatis/MySQLConnectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/Base64Encoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/Encoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/Encoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/IEncoder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/UrlEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ioc/com/company/ioc/UrlEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ioc/Base64Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ioc/Base64Encoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ioc/Encoder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ioc/IEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ioc/IEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ioc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ioc/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ioc/UrlEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ioc/UrlEncoder.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CwDuaKCl6cIDSaDsvhXebpppQu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "settings.saveactions"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="com.company.ioc.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.ioc.Main" />
+      <module name="ioc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.ioc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.com.company.ioc.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0060d2ae-2dfd-482b-a762-00c551ec2453" name="Changes" comment="" />
+      <created>1659704977893</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659704977893</updated>
+      <workItem from="1659704979037" duration="526000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
