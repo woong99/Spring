@@ -12,16 +12,21 @@ import org.springframework.util.StopWatch;
 public class TimerAop {
 
     @Pointcut("execution(* com.example.aop.controller..*.*(..))")
-    private void cut() {}
+    private void cut() {
+    }
 
     @Pointcut("@annotation(com.example.aop.annotation.Timer)")
-    private void enableTimer() {}
+    private void enableTimer() {
+    }
 
     @Around("cut() && enableTimer()")
     public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        Object result =  joinPoint.proceed();
+
+        Object result = joinPoint.proceed();
+
         stopWatch.stop();
         System.out.println("total time : " + stopWatch.getTotalTimeSeconds());
     }

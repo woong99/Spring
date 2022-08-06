@@ -9,7 +9,6 @@ import java.util.Base64;
 public class AopApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(AopApplication.class, args);
         System.out.println(Base64.getEncoder().encodeToString("steve@gmail.com".getBytes()));
     }
