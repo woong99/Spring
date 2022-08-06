@@ -3,7 +3,6 @@ package dto;
 import java.util.List;
 
 public class User {
-
     private String name;
     private int age;
     private List<Car> cars;

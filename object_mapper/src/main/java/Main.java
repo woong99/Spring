@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-
     public static void main(String[] args) throws JsonProcessingException {
         System.out.println("main");
 
@@ -28,7 +27,7 @@ public class Main {
 
         Car car2 = new Car();
         car2.setName("Q5");
-        car2.setCarNumber("22가 2222");
+        car2.setCarNumber("22나 2222");
         car2.setType("SUV");
 
         List<Car> carList = Arrays.asList(car1, car2);
@@ -54,8 +53,8 @@ public class Main {
 
         ObjectNode objectNode = (ObjectNode) jsonNode;
         objectNode.put("name", "steve");
-        objectNode.put("age", 20);
-        System.out.println(jsonNode.toPrettyString());
+        objectNode.put("age", 30);
+
         System.out.println(objectNode.toPrettyString());
 
     }
