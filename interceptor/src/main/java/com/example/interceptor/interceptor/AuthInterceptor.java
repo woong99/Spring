@@ -13,21 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 
-@Slf4j
 @Component
+@Slf4j
 public class AuthInterceptor implements HandlerInterceptor {
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String url = request.getRequestURI();
-        URI uri = UriComponentsBuilder.fromUriString(request.getRequestURI()).query(request.getQueryString()).build().toUri();
+
+        URI uri = UriComponentsBuilder.fromUriString(request.getRequestURI())
+                .query(request.getQueryString())
+                .build()
+                .toUri();
 
         log.info("request url : {}", url);
         boolean hasAnnotation = checkAnnotation(handler, Auth.class);
         log.info("has annotation : {}", hasAnnotation);
 
         // 나의 서버는 모두 public 으로 동작
-        // 단!! Auth 권한을 가진 요청에 대헤서는 세션, 쿠키 ...
+        // 단! Auth 권한을 가진 요청에 대해서는 검사
         if (hasAnnotation) {
             // 권한체크
             String query = uri.getQuery();
@@ -42,7 +45,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     private boolean checkAnnotation(Object handler, Class clazz) {
 
-        // resource javascript, html
+        // resource js, html ...
         if (handler instanceof ResourceHttpRequestHandler) {
             return true;
         }

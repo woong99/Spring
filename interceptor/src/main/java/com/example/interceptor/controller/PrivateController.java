@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrivateController {
 
     @GetMapping("/hello")
-    public String hello() {
-        log.info("private controller");
+    public String hello(){
         return "private hello";
     }
 }
