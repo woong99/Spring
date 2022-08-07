@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Slf4j
 @WebFilter(urlPatterns = "/api/user/*")
+@Slf4j
 public class GlobalFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
         // 전처리
+
         ContentCachingRequestWrapper httpServletRequest = new ContentCachingRequestWrapper((HttpServletRequest) request);
         ContentCachingResponseWrapper httpServletResponse = new ContentCachingResponseWrapper((HttpServletResponse) response);
 
@@ -25,20 +25,14 @@ public class GlobalFilter implements Filter {
         String url = httpServletRequest.getRequestURI();
 
         // 후처리
-        // req
-        String reqContent = new String(httpServletRequest.getContentAsByteArray());
-
+        String reqContent = new String(httpServletResponse.getContentAsByteArray());
         log.info("request url : {}, request body : {}", url, reqContent);
-        String resContent = new String(httpServletResponse.getContentAsByteArray());
+
+        String resContent = new String(httpServletRequest.getContentAsByteArray());
         int httpStatus = httpServletResponse.getStatus();
 
         httpServletResponse.copyBodyToResponse();
 
         log.info("response status : {}, responseBody : {}", httpStatus, resContent);
-//        BufferedReader br = httpServletRequest.getReader();
-//
-//        br.lines().forEach(line -> {
-//            log.info("url : {}, line : {}", url, line);
-//        });
     }
 }

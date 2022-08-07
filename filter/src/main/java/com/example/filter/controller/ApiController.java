@@ -7,16 +7,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
+@Slf4j
 public class ApiController {
 
-
-    @PostMapping("")
-    public User user(@RequestBody User user){
+    @PostMapping("/user")
+    public User user(@RequestBody User user) {
         log.info("User : {}", user);
         return user;
     }
-
 }
