@@ -1,6 +1,6 @@
 public class DollarCalculator implements ICalculator {
 
-    private int price;
+    private int price = 1;
     private MarketApi marketApi;
 
     public DollarCalculator(MarketApi marketApi) {
