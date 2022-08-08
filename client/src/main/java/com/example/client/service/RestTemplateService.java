@@ -16,14 +16,12 @@ import java.net.URI;
 @Service
 public class RestTemplateService {
 
-    // http://localhost/api/server/hello
-    // response
 
     public UserResponse hello() {
         URI uri = UriComponentsBuilder.fromUriString("http://localhost:9090")
                 .path("/api/server/hello")
-                .queryParam("name", "park")
-                .queryParam("age", 30)
+                .queryParam("name", "woong")
+                .queryParam("age", 24)
                 .encode()
                 .build()
                 .toUri();
@@ -32,9 +30,9 @@ public class RestTemplateService {
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UserResponse> result = restTemplate.getForEntity(uri, UserResponse.class);
-
         System.out.println(result.getStatusCode());
         System.out.println(result.getBody());
+
         return result.getBody();
     }
 
@@ -51,10 +49,9 @@ public class RestTemplateService {
 
         System.out.println(uri);
 
-        // http body -> object -> object mapper -> json -> rest template -> http body json
         UserRequest req = new UserRequest();
         req.setName("steve");
-        req.setAge(100);
+        req.setAge(10);
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UserResponse> response = restTemplate.postForEntity(uri, req, UserResponse.class);
@@ -77,10 +74,9 @@ public class RestTemplateService {
 
         System.out.println(uri);
 
-        // http body -> object -> object mapper -> json -> rest template -> http body json
         UserRequest req = new UserRequest();
         req.setName("steve");
-        req.setAge(100);
+        req.setAge(10);
 
         RequestEntity<UserRequest> requestEntity = RequestEntity
                 .post(uri)
@@ -91,6 +87,7 @@ public class RestTemplateService {
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UserResponse> response = restTemplate.exchange(requestEntity, UserResponse.class);
+
         return response.getBody();
     }
 
@@ -104,15 +101,13 @@ public class RestTemplateService {
                 .toUri();
 
         System.out.println(uri);
-
-        // http body -> object -> object mapper -> json -> rest template -> http body json
         UserRequest userRequest = new UserRequest();
         userRequest.setName("steve");
         userRequest.setAge(10);
 
         Req<UserRequest> req = new Req<UserRequest>();
         req.setHeader(new Req.Header());
-        req.setResponseBody(userRequest);
+        req.setResBody(userRequest);
 
         RequestEntity<Req<UserRequest>> requestEntity = RequestEntity
                 .post(uri)
@@ -124,7 +119,8 @@ public class RestTemplateService {
         RestTemplate restTemplate = new RestTemplate();
 
 
-        ResponseEntity<Req<UserResponse>> response = restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Req<UserResponse>>() {
+        ResponseEntity<Req<UserResponse>> response
+                = restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Req<UserResponse>>() {
         });
 
         return response.getBody();
